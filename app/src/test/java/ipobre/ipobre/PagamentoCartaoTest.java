@@ -1,5 +1,6 @@
 package ipobre.ipobre;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import javax.crypto.BadPaddingException;
@@ -22,43 +23,35 @@ public class PagamentoCartaoTest {
 
     @Test
     public void ehCartao()throws Exception {
-        this.preencheMeioPagamentoTeste();
         assertTrue("NÃO É CARTÃO",meioPagamento.isPagamentoCartao());
     }
 
     @Test
     public void NaoehCartao()throws Exception {
-        this.preencheMeioPagamentoTeste();
         assertFalse("É CARTÃO",meioPagamento.isPagamentoCartao());
-
     }
 
     @Test
     public void ehVisa()throws Exception {
-        this.preencheMeioPagamentoTeste();
            assertEquals("NÃO É VISA",meioPagamento.getCartao().getBandeira().toString(),"Visa");
     }
 
     @Test
     public void ehMaster()throws Exception {
-        this.preencheMeioPagamentoTeste();
         assertEquals("NÃO É MASTER",meioPagamento.getCartao().getBandeira().toString(),"Master");
-
     }
     @Test
     public void ehCredito()throws Exception {
-        this.preencheMeioPagamentoTeste();
         assertEquals("NÃO É CRÉDITO",meioPagamento.getCartao().getCartaoTipo().toString(),"Credito");
     }
 
     @Test
     public void ehDebito()throws Exception {
-        this.preencheMeioPagamentoTeste();
         assertEquals("NÃO É DÉBITO",meioPagamento.getCartao().getCartaoTipo().toString(),"Debito");
-
     }
 
-    private void preencheMeioPagamentoTeste(){
+    @Before
+    public void setUp() throws Exception {
         this.meioPagamento.setCartao(new Cartao(CartaoTipo.CREDITO,Bandeira.MASTER));
         this.meioPagamento.setPagamentoCartao(true);
     }
