@@ -18,30 +18,30 @@ public class PagamentoDineheiroTest {
     //VERIFICA SE O PAGAMENTO É EM DINHEIRO
     @Test
     public void ehDinheiro(){
-        this.preencheMeioPagemtnoTeste();
+        this.preencheMeioPagamentoTeste();
         assertTrue("não é pagamento em dinheiro",meioPagamento.isPagamentoDinheiro());
 
     }
 
     @Test
     public void valorPreenchidoValido()throws Exception {
-        this.preencheMeioPagemtnoTeste();
+        this.preencheMeioPagamentoTeste();
         assertTrue("ValorPreenchido Invalido",meioPagamento.valorDinheiroPreenchido());
     }
 
     @Test
     public void NaoehDinheiro()throws Exception {
-        this.preencheMeioPagemtnoTeste();
+        this.preencheMeioPagamentoTeste();
         assertFalse("é Dinheiro",meioPagamento.isPagamentoDinheiro());
     }
 
     @Test
     public void valorPreenchidoInvalido()throws Exception {
-        this.preencheMeioPagemtnoTeste();
+        this.preencheMeioPagamentoTeste();
         assertFalse("Valor Preenchido valido",meioPagamento.valorDinheiroPreenchido());
     }
 
-    private void preencheMeioPagemtnoTeste(){
+    private void preencheMeioPagamentoTeste(){
         this.meioPagamento.setPagamentoDinheiro(false);
         this.meioPagamento.setValorDinheiro(0.1);
     }
