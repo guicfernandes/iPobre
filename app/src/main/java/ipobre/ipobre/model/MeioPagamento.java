@@ -6,6 +6,27 @@ package ipobre.ipobre.model;
 public class MeioPagamento {
     private boolean pagamentoDinheiro;
 
+    public boolean isPagamentoCartao() {
+        return pagamentoCartao;
+    }
+
+    public void setPagamentoCartao(boolean pagamentoCartao) {
+        this.pagamentoCartao = pagamentoCartao;
+    }
+
+    private boolean pagamentoCartao;
+    private Cartao cartao;
+    private Double valorDinheiro;
+
+
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
+    }
+
     public Double getValorDinheiro() {
         return valorDinheiro;
     }
@@ -14,10 +35,7 @@ public class MeioPagamento {
         this.valorDinheiro = valorDinheiro;
     }
 
-    private Double valorDinheiro;
 
-    public MeioPagamento() {
-    }
 
     public MeioPagamento(boolean pagamentoDinheiro, Double valorDinheiro) {
         this.pagamentoDinheiro = pagamentoDinheiro;
@@ -35,10 +53,15 @@ public class MeioPagamento {
     }
 
     public boolean valorDinheiroPreenchido(){
-        if (isPagamentoDinheiro()){
+
             if (this.getValorDinheiro()>0) {
                 return true;
-            }
+
         }return false;
     }
+
+
+    public MeioPagamento() {
+    }
+
 }
